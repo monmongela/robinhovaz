@@ -2,127 +2,574 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Футбольные команды</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Футбольный клуб "Эвертон" - История и достижения</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #00369C;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         
         header {
-            background-color: #0066cc;
+            background: linear-gradient(to right, #00369C, #FFFFFF);
             color: white;
+            padding: 30px 0;
             text-align: center;
-            padding: 1em 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
         }
         
-        nav ul {
-            list-style-type: none;
-            padding: 0;
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .club-badge {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            background-color: white;
+            border-radius: 50%;
             display: flex;
-            justify-content: space-evenly;
-            background-color: #fff;
-            box-shadow: 0px 2px 5px rgba(0,0,0,.1);
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            border: 5px solid #00369C;
         }
         
-        nav a {
-            color: #333;
+        .club-badge img {
+            width: 80px;
+            height: 80px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #f8f8f8;
+        }
+        
+        .stadium {
+            font-size: 1.1rem;
+            color: #f0f0f0;
+        }
+        
+        nav {
+            background-color: #FFFFFF;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .nav-list {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-list li {
+            padding: 0;
+        }
+        
+        .nav-list a {
+            display: block;
+            padding: 18px 25px;
             text-decoration: none;
-            padding: 1em;
-            transition: all .3s ease-in-out;
+            color: #00369C;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
         }
         
-        nav a:hover {
-            background-color: #ddd;
+        .nav-list a:hover, .nav-list a.active {
+            background-color: #f0f7ff;
+            border-bottom: 3px solid #00369C;
         }
         
         main {
-            max-width: 1200px;
-            margin: auto;
-            padding: 2em;
+            background-color: white;
+            padding: 40px 0;
+            min-height: 600px;
         }
         
         section {
-            margin-bottom: 2em;
+            margin-bottom: 50px;
         }
         
         h2 {
-            border-bottom: 1px solid #ccc;
-            padding-bottom: .5em;
+            color: #00369C;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #00369C;
+            display: inline-block;
+        }
+        
+        .intro {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .intro-text {
+            flex: 1;
+        }
+        
+        .intro-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .intro-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .achievement-card {
+            background-color: #f0f7ff;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            border-left: 5px solid #00369C;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .achievement-icon {
+            font-size: 2.5rem;
+            color: #00369C;
+            margin-bottom: 15px;
+        }
+        
+        .achievement-card h3 {
+            color: #00369C;
+            margin-bottom: 10px;
+        }
+        
+        .players {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .player-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            background-color: #f8f8f8;
+        }
+        
+        .player-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .player-image {
+            height: 200px;
+            background-color: #00369C;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+        
+        .player-info {
+            padding: 20px;
+        }
+        
+        .player-info h3 {
+            color: #00369C;
+            margin-bottom: 5px;
+        }
+        
+        .player-position {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .stat-item {
+            background-color: #f0f7ff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .stat-item h3 {
+            color: #00369C;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #00369C;
+            margin-bottom: 10px;
         }
         
         footer {
-            background-color: #0066cc;
+            background-color: #001F5C;
             color: white;
+            padding: 40px 0;
             text-align: center;
-            padding: 1em 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: #00369C;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: white;
+            color: #00369C;
+            transform: scale(1.1);
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        @media (max-width: 768px) {
+            .intro {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .nav-list {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-list a {
+                padding: 15px 20px;
+            }
+            
+            .players, .achievements, .stats {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    
     <header>
-        <h1>Мир футбола</h1>
+        <div class="container">
+            <div class="header-content">
+                <div class="club-badge">
+                    <!-- Эмблема Эвертона -->
+                    <div style="color: #00369C; font-size: 3rem;">EFC</div>
+                </div>
+                <h1>Футбольный клуб "Эвертон"</h1>
+                <p class="tagline">Народный клуб Ливерпуля с 1878 года</p>
+                <p class="stadium"><i class="fas fa-stadium"></i> Стадион: "Гудисон Парк" (39,414 мест)</p>
+            </div>
+        </div>
     </header>
     
     <nav>
-        <ul>
-            <li><a href="#top-clubs">Топ-клубы мира</a></li>
-            <li><a href="#russian-league">Российские клубы</a></li>
-            <li><a href="#history">История футбола</a></li>
-            <li><a href="#contact">Контакты</a></li>
-        </ul>
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="#about" class="active">О клубе</a></li>
+                <li><a href="#history">История</a></li>
+                <li><a href="#achievements">Достижения</a></li>
+                <li><a href="#players">Известные игроки</a></li>
+                <li><a href="#stats">Статистика</a></li>
+            </ul>
+        </div>
     </nav>
     
     <main>
-        <section id="top-clubs">
-            <h2>Лучшие футбольные клубы мира</h2>
-            <p>Знакомьтесь с лучшими клубами планеты:</p>
-            <ol>
-                <li>Реал Мадрид</li>
-                <li>Барселона</li>
-                <li>Манчестер Юнайтед</li>
-                <li>Ювентус</li>
-                <li>Ливерпуль</li>
-            </ol>
-        </section>
-        
-        <section id="russian-league">
-            <h2>Популярные российские клубы</h2>
-            <p>Наши фавориты российского чемпионата:</p>
-            <ul>
-                <li>Зенит</li>
-                <li>Спартак Москва</li>
-                <li>ЦСКА Москва</li>
-                <li>Локомотив Москва</li>
-                <li>Краснодар</li>
-            </ul>
-        </section>
-        
-        <section id="history">
-            <h2>Краткая история футбола</h2>
-            <p>Футбол зародился в Англии в середине XIX века.</p>
-            <p>Сегодня футбол является самой популярной игрой в мире.</p>
-        </section>
-        
-        <section id="contact">
-            <h2>Связаться с нами</h2>
-            <address>
-                Email: football@club.ru<br>
-                Телефон: +7 (495) 123-45-67
-            </address>
-        </section>
+        <div class="container">
+            <section id="about">
+                <h2>О клубе</h2>
+                <div class="intro">
+                    <div class="intro-text">
+                        <p><strong>Футбольный клуб "Эвертон"</strong> — один из старейших и самых успешных футбольных клубов Англии, базирующийся в Ливерпуле. Клуб был основан в 1878 году и является одним из учредителей Футбольной лиги Англии в 1888 году.</p>
+                        <p>Эвертон — один из самых титулованных клубов Англии, выигравший 9 чемпионских титулов, 5 Кубков Англии и Кубок обладателей кубков УЕФА в 1985 году. Клуб проводит домашние матчи на стадионе "Гудисон Парк" с 1892 года.</p>
+                        <p>Эвертон имеет давнее соперничество с другим ливерпульским клубом — "Ливерпулем". Матчи между этими командами известны как "Мерсисайдское дерби", одно из самых известных и страстных дерби в мировом футболе.</p>
+                    </div>
+                    <div class="intro-image">
+                        <div style="background-color: #00369C; color: white; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; padding: 20px; text-align: center;">
+                            Эмблема ФК "Эвертон" - Башня принца Руперта, символ Ливерпуля
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="history">
+                <h2>История клуба</h2>
+                <p>Клуб был основан в 1878 году приходской церковью Святого Доминго. Изначально команда называлась "Сент-Доминго", но уже через год была переименована в "Эвертон" в честь района города, где проводились матчи.</p>
+                <p>В 1888 году "Эвертон" стал одним из 12 клубов-учредителей Футбольной лиги. В сезоне 1890/91 клуб впервые стал чемпионом Англии. В 20-м веке "Эвертон" переживал периоды как успеха, так и неудач, но всегда оставался в высшем дивизионе английского футбола дольше, чем любой другой клуб.</p>
+                <p>Золотой эрой "Эвертона" считается середина 1980-х годов под руководством тренера Говарда Кендалла. В этот период команда дважды выиграла чемпионат Англии (1985, 1987), Кубок Англии (1984) и Кубок обладателей кубков УЕФА (1985).</p>
+            </section>
+            
+            <section id="achievements">
+                <h2>Достижения</h2>
+                <div class="achievements">
+                    <div class="achievement-card">
+                        <div class="achievement-icon"><i class="fas fa-trophy"></i></div>
+                        <h3>Чемпион Англии</h3>
+                        <p>9 раз: 1891, 1915, 1928, 1932, 1939, 1963, 1970, 1985, 1987</p>
+                    </div>
+                    
+                    <div class="achievement-card">
+                        <div class="achievement-icon"><i class="fas fa-cup"></i></div>
+                        <h3>Кубок Англии</h3>
+                        <p>5 раз: 1906, 1933, 1966, 1984, 1995</p>
+                    </div>
+                    
+                    <div class="achievement-card">
+                        <div class="achievement-icon"><i class="fas fa-medal"></i></div>
+                        <h3>Суперкубок Англии</h3>
+                        <p>9 раз: 1928, 1932, 1963, 1970, 1984, 1985, 1986, 1987, 1995</p>
+                    </div>
+                    
+                    <div class="achievement-card">
+                        <div class="achievement-icon"><i class="fas fa-globe-europe"></i></div>
+                        <h3>Еврокубки</h3>
+                        <p>Кубок обладателей кубков УЕФА: 1985</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="players">
+                <h2>Известные игроки</h2>
+                <div class="players">
+                    <div class="player-card">
+                        <div class="player-image" style="background-color: #00369C;">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="player-info">
+                            <h3>Дикси Дин</h3>
+                            <div class="player-position">Нападающий (1925-1937)</div>
+                            <p>Лучший бомбардир в истории клуба (383 гола), рекордсмен по голам в одном сезоне (60 голов).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="player-card">
+                        <div class="player-image" style="background-color: #00369C;">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="player-info">
+                            <h3>Алан Болл</h3>
+                            <div class="player-position">Полузащитник (1966-1971)</div>
+                            <p>Чемпион мира 1966 года, ключевой игрок чемпионской команды "Эвертона" 1970 года.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="player-card">
+                        <div class="player-image" style="background-color: #00369C;">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="player-info">
+                            <h3>Неввилл Саутолл</h3>
+                            <div class="player-position">Вратарь (1981-1998)</div>
+                            <p>Рекордсмен по количеству матчей за клуб (750), легенда "Эвертона" 80-90-х годов.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="player-card">
+                        <div class="player-image" style="background-color: #00369C;">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="player-info">
+                            <h3>Уэйн Руни</h3>
+                            <div class="player-position">Нападающий (2002-2004, 2017-2018)</div>
+                            <p>Начинал карьеру в "Эвертоне", стал легендой "Манчестер Юнайтед" и сборной Англии.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="stats">
+                <h2>Статистика и рекорды</h2>
+                <div class="stats">
+                    <div class="stat-item">
+                        <h3><i class="fas fa-calendar-alt"></i> Основание клуба</h3>
+                        <div class="stat-value">1878</div>
+                        <p>Более 140 лет истории</p>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <h3><i class="fas fa-futbol"></i> Всего матчей в высшем дивизионе</h3>
+                        <div class="stat-value">120+</div>
+                        <p>Больше, чем у любого другого английского клуба</p>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <h3><i class="fas fa-users"></i> Рекорд посещаемости</h3>
+                        <div class="stat-value">78,299</div>
+                        <p>Против "Ливерпуля" в 1948 году</p>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <h3><i class="fas fa-user"></i> Рекордсмен по играм</h3>
+                        <div class="stat-value">Неввилл Саутолл</div>
+                        <p>750 матчей за клуб (1981-1998)</p>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
     
     <footer>
-        © 2025 Все права защищены
+        <div class="container">
+            <div class="footer-content">
+                <h3>Футбольный клуб "Эвертон"</h3>
+                <p>Goodison Park, Goodison Road, Liverpool L4 4EL, England</p>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                
+                <p>Официальный сайт: <a href="https://www.evertonfc.com" style="color: #4CAFDE;">www.evertonfc.com</a></p>
+                
+                <div class="copyright">
+                    &copy; 2023 Футбольный клуб "Эвертон". Все права защищены. Данная страница создана в образовательных целях.
+                </div>
+            </div>
+        </div>
     </footer>
 
+    <script>
+        // Плавная прокрутка к разделам
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Удаляем класс active у всех ссылок
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                // Добавляем класс active текущей ссылке
+                this.classList.add('active');
+                
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetSection.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Подсветка активного раздела при прокрутке
+        window.addEventListener('scroll', function() {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Анимация при загрузке страницы
+        window.addEventListener('load', function() {
+            document.querySelector('.club-badge').style.transform = 'scale(1)';
+            document.querySelector('.club-badge').style.transition = 'transform 0.8s ease';
+            
+            setTimeout(() => {
+                document.querySelector('.club-badge').style.transform = 'scale(1.1)';
+            }, 300);
+        });
+    </script>
 </body>
 </html>
